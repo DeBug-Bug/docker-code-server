@@ -22,6 +22,17 @@ RUN \
     net-tools \
     netcat \
     sudo && \
+  echo "**** install java11 ****" && \  
+  curl -o \
+    /config/openjdk-11.0.2_linux-x64_bin.tar.gz -L \
+    "https://mirrors.huaweicloud.com/openjdk/11.0.2/openjdk-11.0.2_linux-x64_bin.tar.gz" &&
+  tar -xvf /config/openjdk-11.0.2_linux-x64_bin.tar.gz
+  echo "export JAVA_HOME=/config/jdk-11.0.2" >> /etc/profile
+	echo "export CLASSPATH=$:CLASSPATH:$JAVA_HOME/lib/" >> /etc/profile
+  echo "export PATH=$PATH:$JAVA_HOME/bin" >> /etc/profile
+  source /etc/profile
+  java -version
+    
   echo "**** install code-server ****" && \
   if [ -z ${CODE_RELEASE+x} ]; then \
     CODE_RELEASE=$(curl -sX GET https://api.github.com/repos/coder/code-server/releases/latest \
