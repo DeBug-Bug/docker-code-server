@@ -28,8 +28,8 @@ RUN \
     "https://mirrors.huaweicloud.com/openjdk/11.0.2/openjdk-11.0.2_linux-x64_bin.tar.gz" &&
   tar -xvf /config/openjdk-11.0.2_linux-x64_bin.tar.gz
   echo "export JAVA_HOME=/config/jdk-11.0.2" >> /etc/profile
-	echo "export CLASSPATH=$:CLASSPATH:$JAVA_HOME/lib/" >> /etc/profile
-  echo "export PATH=$PATH:$JAVA_HOME/bin" >> /etc/profile
+	echo "export CLASSPATH=\$:CLASSPATH:\$JAVA_HOME/lib/" >> /etc/profile
+  echo "export PATH=\$PATH:\$JAVA_HOME/bin" >> /etc/profile
   source /etc/profile
   java -version
     
